@@ -6,8 +6,14 @@ This is a README for setting up a development environment on a local machine of 
 ### Windows
 
 From an `ADMINISTRATIVE` PowerShell,
-* [Install chocolatey](https://chocolatey.org/install#individual)
-* [Install OpenSSH Client](https://docs.sunfounder.com/projects/picar-x/en/latest/appendix/install_openssh_powershell.html)
+* ```powershell
+Set-ExecutionPolicy AllSigned
+Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+```[Install chocolatey](https://chocolatey.org/install#individual)
+* ```powershell
+Add-WindowsCapability -Online -Name OpenSSH.Client~~~~0.0.1.0
+
+```[Install OpenSSH Client](https://docs.sunfounder.com/projects/picar-x/en/latest/appendix/install_openssh_powershell.html)
 * Install nodejs with `choco install nodejs.install`
 ---
 * [Install Git for Windows](https://gitforwindows.org/)
@@ -38,21 +44,26 @@ docker run hello-world
 Preferably done in Git Bash on Windows
 
 ### 1. Create and cd to a folder dedicated for ksu24 repositories
+
 ```shell
 mkdir ksu24 ; cd ksu24
 ```
 [mkdir](https://en.wikipedia.org/wiki/Mkdir)
+
 [cd](https://en.wikipedia.org/wiki/Cd_(command))
-This is done preferrably in your `$HOME` directory
 ### 2. [git clone] all required ksu24 repositories
+
+This is done preferrably in your `$HOME` directory
   * [ksu24.back]
   * [ksu24.docker]
   * [ksu24.front-new]
 ### 3. Frontend setup:
+
   * `cd ksu24.front-new`
   * `npm i` (alias for [npm-install](https://docs.npmjs.com/cli/v8/commands/npm-install))
   * `cd ../` back to ksu24 folder
 ### 4. Backend setup:
+
   * `cd ksu24.back`
   * Setup a virtual environment
     * WINDOWS: 
@@ -67,6 +78,7 @@ This is done preferrably in your `$HOME` directory
   * Edit `DB_HOST` value in the template to `db`
   * `cd ../` back to ksu24 folder
 ### 5. Docker setup:
+  
   * `cd ksu24.docker`
   * Create a local (development) environment file by copying it from the existing template: `cp .env.local.template .env`
   * Edit `.env` file
@@ -75,6 +87,7 @@ This is done preferrably in your `$HOME` directory
   * Edit `docker-compose.development.yml` file
     * Remove the entire `frontend` block
 ### 6. Bring up the project 
+
 In the `ksu24.docker` folder
   * `[docker compose up] --build --detach`
   * Wait for the project to come up (This might take a while) (take a coffee or a break or a ~~shit~~)
@@ -82,6 +95,7 @@ In the `ksu24.docker` folder
     * `[docker ps] -a`
     * You should see `ksu24.backend` and `ksu24.postgres` in `Running` state
 ### 7. Make the thing usable
+
   * Run database migrations
     * `[docker compose exec] backend python manage.py collectstatic --no-input`
     * `docker compose exec backend python manage.py migrate`
@@ -91,7 +105,8 @@ By now you should be able to access the admin server at http://127.0.0.1:8000/ad
     * `docker compose exec backend DJANGO_SUPERUSER_PASSWORD=admin python manage.py createsuperuser --no-input --username=admin --email=admin@example.com`
   * From `ksu24.front-new` folder run `npm run dev`
 ### 8. Check everything works.
-    * Login to the administrator panel with `admin:admin` (`user:password`)
+  
+  * Login to the administrator panel with `admin:admin` (`user:password`)
 
 <!-- References -->
 
