@@ -37,18 +37,23 @@ docker run hello-world
 
 Preferably done in Git Bash on Windows
 
-1. Create and cd to a folder dedicated for ksu24 repositories
+### 1. Create and cd to a folder dedicated for ksu24 repositories
 ```shell
 mkdir ksu24 ; cd ksu24
 ```
 [mkdir](https://en.wikipedia.org/wiki/Mkdir)
 [cd](https://en.wikipedia.org/wiki/Cd_(command))
 This is done preferrably in your `$HOME` directory
-2. [git clone] all required ksu24 repositories
+### 2. [git clone] all required ksu24 repositories
   * [ksu24.back]
   * [ksu24.docker]
-3. Backend setup:
-  * After git clone, `cd ksu24.back`
+  * [ksu24.front-new]
+### 3. Frontend setup:
+  * `cd ksu24.front-new`
+  * `npm i` (alias for [npm-install](https://docs.npmjs.com/cli/v8/commands/npm-install))
+  * `cd ../` back to ksu24 folder
+### 4. Backend setup:
+  * `cd ksu24.back`
   * Setup a virtual environment
     * WINDOWS: 
       * `python -m venv venv`
@@ -61,19 +66,21 @@ This is done preferrably in your `$HOME` directory
   * Create a local environment file by copying it from the template: `cp .env.local.template .env`
   * Edit `DB_HOST` value in the template to `db`
   * `cd ../` back to ksu24 folder
-4. Docker setup:
+### 5. Docker setup:
   * `cd ksu24.docker`
   * Create a local (development) environment file by copying it from the existing template: `cp .env.local.template .env`
-  * Make sure `COMPOSE_FILE` variable is set to `docker-compose.development.yml`
+  * Edit `.env` file
+    * set`COMPOSE_FILE` variable to `docker-compose.development.yml`
+    * set `FRONT_DIR` variable to `../ksu24.front-new`
   * Edit `docker-compose.development.yml` file
     * Remove the entire `frontend` block
-5. Bring up the project 
+### 6. Bring up the project 
   * `[docker compose up] --build --detach`
   * Wait for the project to come up (This might take a while) (take a coffee or a break or a ~~shit~~)
   * Ensure the containers are running: 
     * `[docker ps] -a`
     * You should see `ksu24.backend` and `ksu24.postgres` in `Running` state
-6. Make the thing usable
+### 7. Make the thing usable
   * Run database migrations
     * `[docker compose exec] backend python manage.py collectstatic --no-input`
     * `docker compose exec backend python manage.py migrate`
@@ -81,7 +88,7 @@ This is done preferrably in your `$HOME` directory
 By now you should be able to access the admin server at http://127.0.0.1:8000/admin or http://localhost:8000/admin
   * Create an admin user for the backend access
     * `docker compose exec backend DJANGO_SUPERUSER_PASSWORD=admin python manage.py createsuperuser --no-input --username=admin --email=admin@example.com`
-7. Check everything works.
+### 8. Check everything works.
     * Login to the administrator panel with `admin:admin` (`user:password`)
 
 <!-- References -->
