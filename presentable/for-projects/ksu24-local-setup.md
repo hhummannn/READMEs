@@ -75,6 +75,7 @@ This is done preferrably in your `$HOME` directory
   * Edit `docker-compose.development.yml` file
     * Remove the entire `frontend` block
 ### 6. Bring up the project 
+In the `ksu24.docker` folder
   * `[docker compose up] --build --detach`
   * Wait for the project to come up (This might take a while) (take a coffee or a break or a ~~shit~~)
   * Ensure the containers are running: 
@@ -88,6 +89,7 @@ This is done preferrably in your `$HOME` directory
 By now you should be able to access the admin server at http://127.0.0.1:8000/admin or http://localhost:8000/admin
   * Create an admin user for the backend access
     * `docker compose exec backend DJANGO_SUPERUSER_PASSWORD=admin python manage.py createsuperuser --no-input --username=admin --email=admin@example.com`
+  * From `ksu24.front-new` folder run `npm run dev`
 ### 8. Check everything works.
     * Login to the administrator panel with `admin:admin` (`user:password`)
 
