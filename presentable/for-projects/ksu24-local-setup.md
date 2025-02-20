@@ -6,14 +6,16 @@ This is a README for setting up a development environment on a local machine of 
 ### Windows
 
 From an `ADMINISTRATIVE` PowerShell,
-* ```powershell
+ 
+[Install chocolatey](https://chocolatey.org/install#individual)
+```powershell
 Set-ExecutionPolicy AllSigned
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
-```[Install chocolatey](https://chocolatey.org/install#individual)
-* ```powershell
+```
+[Install OpenSSH Client](https://docs.sunfounder.com/projects/picar-x/en/latest/appendix/install_openssh_powershell.html)
+```powershell
 Add-WindowsCapability -Online -Name OpenSSH.Client~~~~0.0.1.0
-
-```[Install OpenSSH Client](https://docs.sunfounder.com/projects/picar-x/en/latest/appendix/install_openssh_powershell.html)
+```
 * Install nodejs with `choco install nodejs.install`
 ---
 * [Install Git for Windows](https://gitforwindows.org/)
