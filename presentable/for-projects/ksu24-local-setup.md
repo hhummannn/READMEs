@@ -97,6 +97,7 @@ By now you should be able to access the admin server at http://127.0.0.1:8000/ad
 
 [ksu24.back]: https://github.com/ksu-24/ksu24.back
 [ksu24.docker]: https://github.com/ksu-24/ksu24.docker
+[ksu24.front-new]: https://github.com/ksu-24/ksu24.front-new
 [git clone]: https://git-scm.com/docs/git-clone
 [docker compose up]: https://docs.docker.com/reference/cli/docker/compose/up/
 [docker compose exec]: https://docs.docker.com/reference/cli/docker/compose/exec
