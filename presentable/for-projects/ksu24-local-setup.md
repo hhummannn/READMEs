@@ -91,15 +91,15 @@ This is done preferrably in your `$HOME` directory
 ### 6. Bring up the project 
 
 In the `ksu24.docker` folder
-  * `[docker compose up] --build --detach`
+  * `docker compose up --build --detach` ([docker compose up])
   * Wait for the project to come up (This might take a while) (take a coffee or a break or a ~~shit~~)
   * Ensure the containers are running: 
-    * `[docker ps] -a`
+    * `docker ps -a` ([docker ps])
     * You should see `ksu24.backend` and `ksu24.postgres` in `Running` state
 ### 7. Make the thing usable
 
   * Run database migrations
-    * `[docker compose exec] backend python manage.py collectstatic --no-input`
+    * `docker compose exec backend python manage.py collectstatic --no-input` ([docker compose exec])
     * `docker compose exec backend python manage.py migrate`
     * `docker compose exec backend python manage.py populate_history --auto`
 By now you should be able to access the admin server at http://127.0.0.1:8000/admin or http://localhost:8000/admin
