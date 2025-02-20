@@ -77,7 +77,7 @@ This is done preferrably in your `$HOME` directory
       * `source venv/bin/activate`
       * `python -m pip install -r src/requirements.txt`
   * Create a local environment file by copying it from the template: `cp .env.local.template .env`
-  * Edit `DB_HOST` value in the template to `db`
+  * Edit `DB_HOST` value in the `.env` file to `db`
   * `cd ../` back to ksu24 folder
 ### 5. Docker setup:
   
