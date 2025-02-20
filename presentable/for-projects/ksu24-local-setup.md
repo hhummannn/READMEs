@@ -56,9 +56,9 @@ mkdir ksu24 ; cd ksu24
 ### 2. [git clone] all required ksu24 repositories
 
 This is done preferrably in your `$HOME` directory
-  * [ksu24.back]
-  * [ksu24.docker]
-  * [ksu24.front-new]
+  * `git clone https://github.com/ksu-24/ksu24.back` [ksu24.back]
+  * `git clone https://github.com/ksu-24/ksu24.docker` [ksu24.docker]
+  * `git clone https://github.com/ksu-24/ksu24.front-new` [ksu24.front-new]
 ### 3. Frontend setup:
 
   * `cd ksu24.front-new`
