@@ -107,8 +107,16 @@ By now you should be able to access the admin server at http://127.0.0.1:8000/ad
   * Create an admin user for the backend access
     * `docker compose exec backend /bin/bash -c 'DJANGO_SUPERUSER_PASSWORD=admin python manage.py createsuperuser --no-input --username=admin --email=admin@example.com'`
     * Login to the administrator panel at http://localhost:8000/admin with `admin:admin` (`user:password`)
-  * From `ksu24.front-new` folder run `npm run dev` to launch frontend
-### 8. Check everything works.
+    * Find `Особи` option and add one
+      * When choosing `User:` (`Користувач системи аутентифікації`), make sure to choose admin account
+    * SAVE
+
+### 8. Finalise
+
+  * Go to `ksu24.front-new` folder and run `npm run dev` to launch frontend
+  * A frontend UI should open at http://localhost:5173
+  * Login with `admin@example.com`:`admin`
+    * You should be see the dashboard
   
 
 <!-- References -->
