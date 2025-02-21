@@ -102,13 +102,14 @@ In the `ksu24.docker` folder
     * `docker compose exec backend python manage.py collectstatic --no-input` ([docker compose exec])
     * `docker compose exec backend python manage.py migrate`
     * `docker compose exec backend python manage.py populate_history --auto`
+
 By now you should be able to access the admin server at http://127.0.0.1:8000/admin or http://localhost:8000/admin
   * Create an admin user for the backend access
-    * `docker compose exec backend DJANGO_SUPERUSER_PASSWORD=admin python manage.py createsuperuser --no-input --username=admin --email=admin@example.com`
-  * From `ksu24.front-new` folder run `npm run dev`
+    * `docker compose exec backend /bin/bash -c 'DJANGO_SUPERUSER_PASSWORD=admin python manage.py createsuperuser --no-input --username=admin --email=admin@example.com'`
+    * Login to the administrator panel at http://localhost:8000/admin with `admin:admin` (`user:password`)
+  * From `ksu24.front-new` folder run `npm run dev` to launch frontend
 ### 8. Check everything works.
   
-  * Login to the administrator panel with `admin:admin` (`user:password`)
 
 <!-- References -->
 
