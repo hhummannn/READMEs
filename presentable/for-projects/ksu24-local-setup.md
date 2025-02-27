@@ -29,6 +29,12 @@ I take it You're a more advance user, given you are using an adequate OS! A pers
 Here's a quick recap for what you should have installed before proceeding
 
 * `sudo apt install openssh-client openssh-server` [A "Because" to your "Why"](https://ubuntu.com/server/docs/openssh-server)
+* [See here](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-22-04)
+```shell
+curl -sL https://deb.nodesource.com/setup_23.x -o nodesource_setup.sh
+sudo bash nodesource_setup.sh
+node -v     # Make sure it works
+``` 
 * `sudo apt update && sudo apt install nodejs` [A "Because" to your "Why](https://monovm.com/blog/install-npm-on-ubuntu/#Install-Node.js-and-npm-from-the-Ubuntu)
 * `sudo apt install git-all` [Git says to do it so](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 * `sudo apt update && sudo apt install python3-dev python3-pip python3-venv`
