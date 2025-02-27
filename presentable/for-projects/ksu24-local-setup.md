@@ -64,39 +64,19 @@ This is done preferrably in your `$HOME` directory
   * `cd ksu24.front-new`
   * `npm i` (alias for [npm-install](https://docs.npmjs.com/cli/v8/commands/npm-install))
   * `cd ../` back to ksu24 folder
-### 4. Backend setup:
-
-  * `cd ksu24.back`
-  * Setup a virtual environment
-    * WINDOWS: 
-      * `python -m venv venv`
-      * `source venv/Scripts/activate`
-      * `python -m pip install -r src/requirements.txt`
-    * LINUX: 
-      * `python3 -m venv venv`
-      * `source venv/bin/activate`
-      * `python -m pip install -r src/requirements.txt`
-  * Create a local environment file by copying it from the template: `cp .env.local.template .env`
-  * Edit `DB_HOST` value in the `.env` file to `db`
-  * `cd ../` back to ksu24 folder
-### 5. Docker setup:
+### 4. Docker setup:
   
   * `cd ksu24.docker`
-  * Create a local (development) environment file by copying it from the existing template: `cp .env.local.template .env`
-  * Edit `.env` file
-    * set`COMPOSE_FILE` variable to `docker-compose.development.yml`
-    * set `FRONT_DIR` variable to `../ksu24.front-new`
-  * Edit `docker-compose.development.yml` file
-    * Remove the entire `frontend` block
-### 6. Bring up the project 
+  * Take the `.env` and `docker-compose.development.yml` that you were provided and replace the files in the `ksu24.docker` folder
+### 5. Bring up the project 
 
 In the `ksu24.docker` folder
   * `docker compose up --build --detach` ([docker compose up])
   * Wait for the project to come up (This might take a while) (take a coffee or a break or a ~~shit~~)
   * Ensure the containers are running: 
     * `docker ps -a` ([docker ps])
-    * You should see `ksu24.backend` and `ksu24.postgres` in `Running` state
-### 7. Make the thing usable
+    * You should see `ksu24.backend` and `ksu24.postgres` in `Up` state
+### 6. Make the thing usable
 
   * Run database migrations
     * `docker compose exec backend python manage.py collectstatic --no-input` ([docker compose exec])
@@ -105,13 +85,13 @@ In the `ksu24.docker` folder
 
 By now you should be able to access the admin server at http://127.0.0.1:8000/admin or http://localhost:8000/admin
   * Create an admin user for the backend access
-    * `docker compose exec backend /bin/bash -c 'DJANGO_SUPERUSER_PASSWORD=admin python manage.py createsuperuser --no-input --username=admin --email=admin@example.com'`
+    * `docker compose exec backend /bin/sh -c 'DJANGO_SUPERUSER_PASSWORD=admin python manage.py createsuperuser --no-input --username=admin --email=admin@example.com'`
     * Login to the administrator panel at http://localhost:8000/admin with `admin:admin` (`user:password`)
     * Find `Особи` option and add one
       * When choosing `User:` (`Користувач системи аутентифікації`), make sure to choose admin account
     * SAVE
 
-### 8. Finalise
+### 7. Finalise
 
   * Go to `ksu24.front-new` folder and run `npm run dev` to launch frontend
   * A frontend UI should open at http://localhost:5173
